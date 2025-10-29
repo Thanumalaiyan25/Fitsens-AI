@@ -17,7 +17,7 @@ os.environ["OPENCV_VIDEOIO_PRIORITY_MSMF"] = "0"
 os.environ["OPENCV_VIDEOIO_MSMF_ENABLE_HW_TRANSFORMS"] = "0"
 import cv2
 import streamlit as st
-MONGO_URI = "mongodb+srv://fitsensai:fitsensai1@cluster0.wfqw3ju.mongodb.net/"
+MONGO_URI = "mongodb://localhost:27017/"
 client = MongoClient(MONGO_URI)
 db = client["fitsens_ai"]
 users_collection = db["users"]
@@ -677,3 +677,4 @@ with tabs[5]:
 
 st.markdown("<hr>", unsafe_allow_html=True)
 st.markdown("<div style='text-align:center; color:#9fbefc; padding:10px;'>Made for Injury-Free fit and Healthier Life ❤ • FitSens-Ai</div>", unsafe_allow_html=True)
+
