@@ -1,10 +1,7 @@
-import streamlit as st
-import cv2
 import mediapipe as mp
 import numpy as np
 import threading
 import time
-import os
 import platform
 from PIL import Image
 import pandas as pd
@@ -12,11 +9,14 @@ from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 import matplotlib.pyplot as plt
 # --- MongoDB User Authentication Setup ---
-import streamlit as st
 from pymongo import MongoClient
 import bcrypt
 import re
-
+import os
+os.environ["OPENCV_VIDEOIO_PRIORITY_MSMF"] = "0"
+os.environ["OPENCV_VIDEOIO_MSMF_ENABLE_HW_TRANSFORMS"] = "0"
+import cv2
+import streamlit as st
 MONGO_URI = "mongodb+srv://fitsensai:fitsensai1@cluster0.wfqw3ju.mongodb.net/"
 client = MongoClient(MONGO_URI)
 db = client["fitsens_ai"]
