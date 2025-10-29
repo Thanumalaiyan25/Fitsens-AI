@@ -1,0 +1,15 @@
+streamlit
+opencv-python
+mediapipe
+numpy
+pandas
+Pillow
+sentence-transformers
+scikit-learn
+matplotlib
+pymongo
+bcrypt
+requests
+streamlit-lottie
+pyttsx3
+google-generativeai
