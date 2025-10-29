@@ -17,8 +17,27 @@ os.environ["OPENCV_VIDEOIO_PRIORITY_MSMF"] = "0"
 os.environ["OPENCV_VIDEOIO_MSMF_ENABLE_HW_TRANSFORMS"] = "0"
 import cv2
 import streamlit as st
-MONGO_URI = "mongodb://localhost:27017/"
-client = MongoClient(MONGO_URI)
+# --- MongoDB Connection (Localhost Version) ---
+from pymongo import MongoClient
+import streamlit as st
+
+try:
+    # Use a safe connection with timeout
+    client = MongoClient(
+        "mongodb://localhost:27017/",
+        serverSelectionTimeoutMS=5000,  # 5 seconds timeout
+        connectTimeoutMS=5000
+    )
+    client.server_info()  # Force connection check
+    st.success("✅ MongoDB (localhost) connected successfully!")
+except Exception as e:
+    st.error(f"❌ MongoDB connection failed: {e}")
+    st.stop()  # Stop the app if DB is unreachable
+
+# Access database and collection
+db = client["fitsens_ai"]
+users_collection = db["users"]
+
 db = client["fitsens_ai"]
 users_collection = db["users"]
 
@@ -677,4 +696,5 @@ with tabs[5]:
 
 st.markdown("<hr>", unsafe_allow_html=True)
 st.markdown("<div style='text-align:center; color:#9fbefc; padding:10px;'>Made for Injury-Free fit and Healthier Life ❤ • FitSens-Ai</div>", unsafe_allow_html=True)
+
 
