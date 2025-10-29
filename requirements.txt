@@ -1,6 +1,6 @@
 streamlit
 opencv-python-headless==4.7.0.72
-mediapipe==0.10.14
+mediapipe==0.9.3.0
 numpy
 pandas
 Pillow
